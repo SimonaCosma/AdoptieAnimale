@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using AdoptieAnimale.WebAPI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Adaug? DbContext
+builder.Services.AddDbContext<AdoptieAnimaleContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 
