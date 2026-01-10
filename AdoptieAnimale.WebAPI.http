@@ -1,0 +1,6 @@
+@AdoptieAnimale.WebAPI_HostAddress = http://localhost:5107
+
+GET {{AdoptieAnimale.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
