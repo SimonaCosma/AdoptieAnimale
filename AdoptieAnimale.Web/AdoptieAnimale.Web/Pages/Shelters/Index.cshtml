@@ -1,0 +1,55 @@
+﻿@page
+@model AdoptieAnimale.Web.Pages.Shelters.IndexModel
+@{
+    ViewData["Title"] = "Adăposturi";
+}
+
+<h1>Adăposturi de Animale</h1>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger">@Model.ErrorMessage</div>
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Adaugă Adăpost Nou</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nume</th>
+            <th>Oraș</th>
+            <th>Adresă</th>
+            <th>Telefon</th>
+            <th>Email</th>
+            <th>Capacitate</th>
+            <th>Acțiuni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Shelters)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@(item.City ?? "N/A")</td>
+                <td>@item.Address</td>
+                <td>@(item.Phone ?? "N/A")</td>
+                <td>@(item.Email ?? "N/A")</td>
+                <td>@item.Capacity</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Modifică</a>
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-sm btn-info">Detalii</a>
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Șterge</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Shelters.Count == 0)
+{
+    <div class="alert alert-info">
+        Nu există adăposturi în sistem. <a asp-page="Create">Adaugă primul adăpost</a>
+    </div>
+}

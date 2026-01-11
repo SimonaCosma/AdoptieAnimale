@@ -1,0 +1,65 @@
+﻿@page
+@model AdoptieAnimale.Web.Pages.Animals.IndexModel
+@{
+    ViewData["Title"] = "Animale Disponibile";
+}
+
+<h1>Animale Disponibile pentru Adopție</h1>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Adaugă Animal Nou</a>
+</p>
+
+<div class="row">
+    @foreach (var animal in Model.Animals)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                @if (!string.IsNullOrEmpty(animal.PhotoUrl))
+                {
+                    <img src="@animal.PhotoUrl" class="card-img-top" alt="@animal.Name" style="height: 200px; object-fit: cover;">
+                }
+                else
+                {
+                    <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                        <span>Fără fotografie</span>
+                    </div>
+                }
+                <div class="card-body">
+                    <h5 class="card-title">@animal.Name</h5>
+                    <p class="card-text">
+                        <strong>Specie:</strong> @animal.Species<br />
+                        <strong>Rasă:</strong> @(animal.Breed ?? "Necunoscută")<br />
+                        <strong>Vârstă:</strong> @animal.Age @(animal.Age == 1 ? "an" : "ani")<br />
+                        <strong>Gen:</strong> @(animal.Gender ?? "Necunoscut")<br />
+                        <strong>Categorie:</strong> @(animal.Category?.Name ?? "N/A")<br />
+                        <strong>Adăpost:</strong> @(animal.Shelter?.Name ?? "N/A")<br />
+                        <strong>Status:</strong>
+                        <span class="badge @(animal.Status == "Disponibil" ? "bg-success" : "bg-warning")">
+                            @animal.Status
+                        </span>
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <a asp-page="./Details" asp-route-id="@animal.ID" class="btn btn-sm btn-info">Detalii</a>
+                        <a asp-page="./Edit" asp-route-id="@animal.ID" class="btn btn-sm btn-warning">Modifică</a>
+                        <a asp-page="./Delete" asp-route-id="@animal.ID" class="btn btn-sm btn-danger">Șterge</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@if (Model.Animals.Count == 0)
+{
+    <div class="alert alert-info" role="alert">
+        Nu există animale în sistem. <a asp-page="Create">Adaugă primul animal</a>
+    </div>
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdoptieAnimale.Mobile.Views.MainPage"
+             Title="Animale Disponibile">
+
+    <Grid RowDefinitions="Auto,*" Padding="10">
+        <!-- Header cu buton refresh -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="10" Margin="0,0,0,10">
+            <Button Text="Refresh" Clicked="OnRefreshClicked" />
+            <Button Text="Categorii" Clicked="OnCategoriesClicked" />
+            <Button Text="Adăposturi" Clicked="OnSheltersClicked" />
+        </HorizontalStackLayout>
+
+        <!-- Lista de animale -->
+        <CollectionView Grid.Row="1" x:Name="AnimalsCollection" SelectionMode="Single" SelectionChanged="OnAnimalSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10" BorderColor="LightGray" CornerRadius="10">
+                        <Grid ColumnDefinitions="80,*" RowDefinitions="Auto,Auto,Auto,Auto">
+                            <!-- Imagine placeholder -->
+                            <Frame Grid.Column="0" Grid.RowSpan="4" WidthRequest="70" HeightRequest="70" 
+                                   CornerRadius="10" Padding="0" HasShadow="False" BackgroundColor="LightGray">
+                                <Label Text="🐾" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Frame>
+
+                            <!-- Detalii animal -->
+                            <Label Grid.Column="1" Grid.Row="0" Text="{Binding Name}" 
+                                   FontSize="18" FontAttributes="Bold" />
+                            <Label Grid.Column="1" Grid.Row="1" 
+                                   Text="{Binding Species}" FontSize="14" TextColor="Gray"/>
+                            <Label Grid.Column="1" Grid.Row="2" 
+                                   Text="{Binding Age, StringFormat='Vârstă: {0} ani'}" FontSize="12"/>
+                            <Label Grid.Column="1" Grid.Row="3" 
+                                   Text="{Binding Status}" FontSize="12" TextColor="Green"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Loading indicator -->
+        <ActivityIndicator Grid.Row="1" x:Name="LoadingIndicator" 
+                          IsRunning="False" IsVisible="False" 
+                          Color="Blue" VerticalOptions="Center"/>
+    </Grid>
+</ContentPage>

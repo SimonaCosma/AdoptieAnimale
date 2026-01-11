@@ -1,0 +1,49 @@
+﻿@page
+@model AdoptieAnimale.Web.Pages.Shelters.DeleteModel
+@{
+    ViewData["Title"] = "Șterge Adăpost";
+}
+
+<h1>Șterge Adăpost</h1>
+<h3 class="text-danger">Sigur doriți să ștergeți acest adăpost?</h3>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<div class="alert alert-warning" role="alert">
+    <strong>Atenție!</strong> Ștergerea acestui adăpost poate afecta animalele asociate cu el.
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">Nume Adăpost</dt>
+            <dd class="col-sm-8">@Model.Shelter.Name</dd>
+
+            <dt class="col-sm-4">Adresă</dt>
+            <dd class="col-sm-8">@Model.Shelter.Address</dd>
+
+            <dt class="col-sm-4">Oraș</dt>
+            <dd class="col-sm-8">@(Model.Shelter.City ?? "N/A")</dd>
+
+            <dt class="col-sm-4">Telefon</dt>
+            <dd class="col-sm-8">@(Model.Shelter.Phone ?? "N/A")</dd>
+
+            <dt class="col-sm-4">Email</dt>
+            <dd class="col-sm-8">@(Model.Shelter.Email ?? "N/A")</dd>
+
+            <dt class="col-sm-4">Capacitate</dt>
+            <dd class="col-sm-8">@Model.Shelter.Capacity animale</dd>
+        </dl>
+
+        <form method="post">
+            <input type="hidden" asp-for="Shelter.ID" />
+            <button type="submit" class="btn btn-danger">Șterge Definitiv</button>
+            <a asp-page="./Index" class="btn btn-secondary">Anulează</a>
+        </form>
+    </div>
+</div>

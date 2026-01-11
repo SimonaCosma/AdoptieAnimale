@@ -1,0 +1,46 @@
+﻿@page
+@model AdoptieAnimale.Web.Pages.Shelters.DetailsModel
+@{
+    ViewData["Title"] = "Detalii Adăpost";
+}
+
+<h1>Detalii Adăpost</h1>
+<hr />
+
+<div class="row">
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-3">Nume Adăpost</dt>
+            <dd class="col-sm-9">@Model.Shelter.Name</dd>
+
+            <dt class="col-sm-3">Adresă</dt>
+            <dd class="col-sm-9">@Model.Shelter.Address</dd>
+
+            <dt class="col-sm-3">Oraș</dt>
+            <dd class="col-sm-9">@(Model.Shelter.City ?? "N/A")</dd>
+
+            <dt class="col-sm-3">Telefon</dt>
+            <dd class="col-sm-9">@(Model.Shelter.Phone ?? "N/A")</dd>
+
+            <dt class="col-sm-3">Email</dt>
+            <dd class="col-sm-9">
+                @if (!string.IsNullOrEmpty(Model.Shelter.Email))
+                {
+                    <a href="mailto:@Model.Shelter.Email">@Model.Shelter.Email</a>
+                }
+                else
+                {
+                    <text>N/A</text>
+                }
+            </dd>
+
+            <dt class="col-sm-3">Capacitate</dt>
+            <dd class="col-sm-9">@Model.Shelter.Capacity animale</dd>
+        </dl>
+
+        <div class="mt-4">
+            <a asp-page="./Edit" asp-route-id="@Model.Shelter.ID" class="btn btn-warning">Modifică</a>
+            <a asp-page="./Index" class="btn btn-secondary">Înapoi la listă</a>
+        </div>
+    </div>
+</div>

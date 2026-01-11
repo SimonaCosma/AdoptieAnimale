@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdoptieAnimale.Mobile.Views.LoginPage"
+             Title="Login">
+
+    <ScrollView Padding="30">
+        <VerticalStackLayout Spacing="20" VerticalOptions="Center">
+
+            <!-- Logo/Header -->
+            <Label Text="🐾" FontSize="80" HorizontalOptions="Center"/>
+            <Label Text="Bine ai venit!" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+            <Label Text="Autentifică-te pentru a continua" 
+                   FontSize="16" 
+                   TextColor="Gray"
+                   HorizontalOptions="Center"/>
+
+            <!-- Email -->
+            <Label Text="Email:" FontAttributes="Bold"/>
+            <Entry x:Name="EmailEntry" 
+                   Placeholder="email@exemplu.com" 
+                   Keyboard="Email"/>
+
+            <!-- Password -->
+            <Label Text="Parolă:" FontAttributes="Bold"/>
+            <Entry x:Name="PasswordEntry" 
+                   Placeholder="Introdu parola" 
+                   IsPassword="True"/>
+
+            <!-- Remember Me -->
+            <HorizontalStackLayout Spacing="10">
+                <CheckBox x:Name="RememberMeCheckBox"/>
+                <Label Text="Ține-mă minte" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Login Button -->
+            <Button Text="Autentifică-te" 
+                    BackgroundColor="Green" 
+                    TextColor="White"
+                    FontSize="18"
+                    Clicked="OnLoginClicked"/>
+
+            <!-- Register Link -->
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Nu ai cont? "/>
+                        <Span Text="Înregistrează-te" 
+                              TextColor="Blue" 
+                              TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRegisterTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

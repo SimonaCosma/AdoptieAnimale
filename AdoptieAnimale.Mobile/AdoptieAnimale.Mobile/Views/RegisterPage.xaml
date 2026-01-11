@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdoptieAnimale.Mobile.Views.RegisterPage"
+             Title="Înregistrare">
+
+    <ScrollView Padding="30">
+        <VerticalStackLayout Spacing="20">
+
+            <!-- Header -->
+            <Label Text="🐾" FontSize="60" HorizontalOptions="Center"/>
+            <Label Text="Creează Cont Nou" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center"/>
+
+            <!-- Email -->
+            <Label Text="Email:" FontAttributes="Bold"/>
+            <Entry x:Name="EmailEntry" 
+                   Placeholder="email@exemplu.com" 
+                   Keyboard="Email"/>
+
+            <!-- Password -->
+            <Label Text="Parolă:" FontAttributes="Bold"/>
+            <Entry x:Name="PasswordEntry" 
+                   Placeholder="Minim 6 caractere" 
+                   IsPassword="True"/>
+
+            <!-- Confirm Password -->
+            <Label Text="Confirmă Parola:" FontAttributes="Bold"/>
+            <Entry x:Name="ConfirmPasswordEntry" 
+                   Placeholder="Re-introdu parola" 
+                   IsPassword="True"/>
+
+            <!-- Register Button -->
+            <Button Text="Înregistrează-te" 
+                    BackgroundColor="Green" 
+                    TextColor="White"
+                    FontSize="18"
+                    Clicked="OnRegisterClicked"/>
+
+            <!-- Login Link -->
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ai deja cont? "/>
+                        <Span Text="Autentifică-te" 
+                              TextColor="Blue" 
+                              TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLoginTapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

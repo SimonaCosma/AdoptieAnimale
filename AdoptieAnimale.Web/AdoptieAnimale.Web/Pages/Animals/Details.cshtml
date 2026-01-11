@@ -1,0 +1,61 @@
+﻿@page
+@model AdoptieAnimale.Web.Pages.Animals.DetailsModel
+@{
+    ViewData["Title"] = "Detalii Animal";
+}
+
+<h1>Detalii Animal</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        @if (!string.IsNullOrEmpty(Model.Animal.PhotoUrl))
+        {
+            <img src="@Model.Animal.PhotoUrl" class="img-fluid rounded mb-3" alt="@Model.Animal.Name">
+        }
+    </div>
+    <div class="col-md-6">
+        <dl class="row">
+            <dt class="col-sm-4">Nume</dt>
+            <dd class="col-sm-8">@Model.Animal.Name</dd>
+
+            <dt class="col-sm-4">Specie</dt>
+            <dd class="col-sm-8">@Model.Animal.Species</dd>
+
+            <dt class="col-sm-4">Rasă</dt>
+            <dd class="col-sm-8">@(Model.Animal.Breed ?? "Necunoscută")</dd>
+
+            <dt class="col-sm-4">Vârstă</dt>
+            <dd class="col-sm-8">@Model.Animal.Age @(Model.Animal.Age == 1 ? "an" : "ani")</dd>
+
+            <dt class="col-sm-4">Gen</dt>
+            <dd class="col-sm-8">@(Model.Animal.Gender ?? "Necunoscut")</dd>
+
+            <dt class="col-sm-4">Status</dt>
+            <dd class="col-sm-8">
+                <span class="badge @(Model.Animal.Status == "Disponibil" ? "bg-success" : "bg-warning")">
+                    @Model.Animal.Status
+                </span>
+            </dd>
+
+            <dt class="col-sm-4">Categorie</dt>
+            <dd class="col-sm-8">@(Model.Animal.Category?.Name ?? "N/A")</dd>
+
+            <dt class="col-sm-4">Adăpost</dt>
+            <dd class="col-sm-8">@(Model.Animal.Shelter?.Name ?? "N/A")</dd>
+
+            <dt class="col-sm-4">Data Adăugării</dt>
+            <dd class="col-sm-8">@Model.Animal.DateAdded.ToString("dd.MM.yyyy")</dd>
+
+            @if (!string.IsNullOrEmpty(Model.Animal.Description))
+            {
+                <dt class="col-sm-4">Descriere</dt>
+                <dd class="col-sm-8">@Model.Animal.Description</dd>
+            }
+        </dl>
+
+        <div class="mt-3">
+            <a asp-page="./Edit" asp-route-id="@Model.Animal.ID" class="btn btn-warning">Modifică</a>
+            <a asp-page="./Index" class="btn btn-secondary">Înapoi la listă</a>
+        </div>
+    </div>
+</div>

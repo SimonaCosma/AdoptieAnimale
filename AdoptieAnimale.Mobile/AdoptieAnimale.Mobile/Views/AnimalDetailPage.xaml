@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdoptieAnimale.Mobile.Views.AnimalDetailPage"
+             Title="Detalii Animal">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+            <!-- Imagine placeholder -->
+            <Frame CornerRadius="15" Padding="0" HeightRequest="200" BackgroundColor="LightGray">
+                <Label Text="🐾" FontSize="80" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+
+            <!-- Nume -->
+            <Label x:Name="NameLabel" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+            <!-- Detalii -->
+            <Frame BorderColor="LightGray" Padding="15" CornerRadius="10">
+                <VerticalStackLayout Spacing="10">
+                    <Label x:Name="SpeciesLabel" FontSize="16"/>
+                    <Label x:Name="BreedLabel" FontSize="14" TextColor="Gray"/>
+                    <Label x:Name="AgeLabel" FontSize="14"/>
+                    <Label x:Name="GenderLabel" FontSize="14"/>
+                    <Label x:Name="StatusLabel" FontSize="14" FontAttributes="Bold" TextColor="Green"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Descriere -->
+            <Label Text="Descriere:" FontSize="16" FontAttributes="Bold"/>
+            <Label x:Name="DescriptionLabel" FontSize="14"/>
+
+            <!-- Butoane -->
+            <Button Text="🐾 Vreau să Adopt acest Animal!" 
+                    BackgroundColor="Green" 
+                    TextColor="White"
+                    FontSize="16"
+                    Clicked="OnAdoptClicked"/>
+
+            <Button Text="Modifică" 
+                    BackgroundColor="Orange" 
+                    TextColor="White"
+                    Clicked="OnEditClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

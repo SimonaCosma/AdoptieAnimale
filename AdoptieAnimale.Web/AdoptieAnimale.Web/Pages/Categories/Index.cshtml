@@ -1,0 +1,49 @@
+﻿@page
+@model AdoptieAnimale.Web.Pages.Categories.IndexModel
+@{
+    ViewData["Title"] = "Categorii";
+}
+
+<h1>Categorii de Animale</h1>
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Adaugă Categorie Nouă</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nume</th>
+            <th>Descriere</th>
+            <th>Acțiuni</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Categories)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@(item.Description ?? "N/A")</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Modifică</a>
+                    <a asp-page="./Details" asp-route-id="@item.ID" class="btn btn-sm btn-info">Detalii</a>
+                    <a asp-page="./Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Șterge</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.Categories.Count == 0)
+{
+    <div class="alert alert-info" role="alert">
+        Nu există categorii în sistem. <a asp-page="Create">Adaugă prima categorie</a>
+    </div>
+}

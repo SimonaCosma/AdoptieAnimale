@@ -1,0 +1,108 @@
+﻿@page
+@model AdoptieAnimale.Web.Pages.Animals.CreateModel
+@{
+    ViewData["Title"] = "Adaugă Animal";
+}
+
+<h1>Adaugă Animal Nou</h1>
+
+<hr />
+
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @Model.ErrorMessage
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.Name" class="control-label"></label>
+                <input asp-for="Animal.Name" class="form-control" />
+                <span asp-validation-for="Animal.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.Species" class="control-label"></label>
+                <input asp-for="Animal.Species" class="form-control" />
+                <span asp-validation-for="Animal.Species" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.Breed" class="control-label"></label>
+                <input asp-for="Animal.Breed" class="form-control" />
+                <span asp-validation-for="Animal.Breed" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.Age" class="control-label"></label>
+                <input asp-for="Animal.Age" class="form-control" type="number" />
+                <span asp-validation-for="Animal.Age" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.Gender" class="control-label"></label>
+                <select asp-for="Animal.Gender" class="form-control">
+                    <option value="">Selectează...</option>
+                    <option value="Mascul">Mascul</option>
+                    <option value="Femelă">Femelă</option>
+                </select>
+                <span asp-validation-for="Animal.Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.Description" class="control-label"></label>
+                <textarea asp-for="Animal.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Animal.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.PhotoUrl" class="control-label"></label>
+                <input asp-for="Animal.PhotoUrl" class="form-control" />
+                <span asp-validation-for="Animal.PhotoUrl" class="text-danger"></span>
+                <small class="form-text text-muted">Adresa URL a fotografiei animalului</small>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.Status" class="control-label"></label>
+                <select asp-for="Animal.Status" class="form-control">
+                    <option value="Disponibil">Disponibil</option>
+                    <option value="Adoptat">Adoptat</option>
+                    <option value="În Procesare">În Procesare</option>
+                </select>
+                <span asp-validation-for="Animal.Status" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.CategoryID" class="control-label"></label>
+                <select asp-for="Animal.CategoryID" class="form-control" asp-items="Model.CategoriesSelectList">
+                    <option value="">-- Selectează Categoria --</option>
+                </select>
+                <span asp-validation-for="Animal.CategoryID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Animal.ShelterID" class="control-label"></label>
+                <select asp-for="Animal.ShelterID" class="form-control" asp-items="Model.SheltersSelectList">
+                    <option value="">-- Selectează Adăpostul --</option>
+                </select>
+                <span asp-validation-for="Animal.ShelterID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Salvează" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-secondary">Înapoi la listă</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

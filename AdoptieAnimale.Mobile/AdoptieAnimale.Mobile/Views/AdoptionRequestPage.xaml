@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdoptieAnimale.Mobile.Views.AdoptionRequestPage"
+             Title="Cerere Adopție">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+            <Label Text="🐾 Completează formularul de adopție" 
+                   FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+            <!-- Detalii animal -->
+            <Frame BorderColor="LightGray" Padding="15" CornerRadius="10" BackgroundColor="LightYellow">
+                <VerticalStackLayout Spacing="5">
+                    <Label Text="Animal selectat:" FontAttributes="Bold"/>
+                    <Label x:Name="AnimalNameLabel" FontSize="18"/>
+                    <Label x:Name="AnimalDetailsLabel" FontSize="14" TextColor="Gray"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Formular -->
+            <Label Text="Numele tău:" FontAttributes="Bold"/>
+            <Entry x:Name="NameEntry" Placeholder="Introdu numele complet"/>
+
+            <Label Text="Email:" FontAttributes="Bold"/>
+            <Entry x:Name="EmailEntry" Placeholder="email@exemplu.com" Keyboard="Email"/>
+
+            <Label Text="Telefon:" FontAttributes="Bold"/>
+            <Entry x:Name="PhoneEntry" Placeholder="+40 123 456 789" Keyboard="Telephone"/>
+
+            <Label Text="Adresă:" FontAttributes="Bold"/>
+            <Entry x:Name="AddressEntry" Placeholder="Strada, Nr., Oraș"/>
+
+            <Label Text="De ce vrei să adopți acest animal?" FontAttributes="Bold"/>
+            <Editor x:Name="ReasonEditor" Placeholder="Motivul adopției..." HeightRequest="100"/>
+
+            <!-- Butoane -->
+            <Button Text="Trimite Cererea" 
+                    BackgroundColor="Green" 
+                    TextColor="White"
+                    FontSize="16"
+                    Clicked="OnSubmitClicked"/>
+
+            <Button Text="Anulează" 
+                    BackgroundColor="Gray" 
+                    TextColor="White"
+                    Clicked="OnCancelClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

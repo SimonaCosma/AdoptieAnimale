@@ -1,0 +1,9 @@
+<Project>
+  <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
+  <PropertyGroup>
+	  <BaseIntermediateOutputPath>C:\_build\obj\</BaseIntermediateOutputPath>
+	  <MSBuildProjectExtensionsPath>C:\_build\obj\$(MSBuildProjectName)\</MSBuildProjectExtensionsPath>
+	  <BaseOutputPath>C:\_build\bin\</BaseOutputPath>
+
+  </PropertyGroup>
+</Project>

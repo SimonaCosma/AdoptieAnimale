@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AdoptieAnimale.Mobile.Views.AnimalEditPage"
+             Title="Modifică Animal">
+
+    <ScrollView Padding="20">
+        <VerticalStackLayout Spacing="15">
+            <Label Text="Nume:" FontAttributes="Bold"/>
+            <Entry x:Name="NameEntry"/>
+
+            <Label Text="Specie:" FontAttributes="Bold"/>
+            <Entry x:Name="SpeciesEntry"/>
+
+            <Label Text="Rasă:" FontAttributes="Bold"/>
+            <Entry x:Name="BreedEntry"/>
+
+            <Label Text="Vârstă:" FontAttributes="Bold"/>
+            <Entry x:Name="AgeEntry" Keyboard="Numeric"/>
+
+            <Label Text="Gen:" FontAttributes="Bold"/>
+            <Picker x:Name="GenderPicker">
+                <Picker.Items>
+                    <x:String>Mascul</x:String>
+                    <x:String>Femelă</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Label Text="Descriere:" FontAttributes="Bold"/>
+            <Editor x:Name="DescriptionEditor" HeightRequest="100"/>
+
+            <Label Text="Status:" FontAttributes="Bold"/>
+            <Picker x:Name="StatusPicker">
+                <Picker.Items>
+                    <x:String>Disponibil</x:String>
+                    <x:String>Adoptat</x:String>
+                    <x:String>În așteptare</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Button Text="Salvează" BackgroundColor="Green" TextColor="White" Clicked="OnSaveClicked"/>
+            <Button Text="Anulează" BackgroundColor="Gray" TextColor="White" Clicked="OnCancelClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
