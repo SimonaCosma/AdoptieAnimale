@@ -8,7 +8,7 @@ namespace AdoptieAnimale.Mobile.Services
     {
         private readonly HttpClient _httpClient;
         //private const string BaseUrl = "https://10.0.2.2:7191/api"; // Android Emulator
-        private const string BaseUrl = "https://localhost:7191/api";
+        private const string BaseUrl = "http://localhost:5107/api";
 
         public ApiService()
         {
@@ -29,7 +29,7 @@ namespace AdoptieAnimale.Mobile.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("/animals");
+                var response = await _httpClient.GetAsync("api/animals");
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<Animal>>(content) ?? new List<Animal>();
@@ -76,7 +76,7 @@ namespace AdoptieAnimale.Mobile.Services
         // ===== CATEGORIES =====
         public async Task<List<Category>> GetCategoriesAsync()
         {
-            var response = await _httpClient.GetAsync("/categories");
+            var response = await _httpClient.GetAsync("api/categories");
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<Category>>(content) ?? new List<Category>();
@@ -117,7 +117,7 @@ namespace AdoptieAnimale.Mobile.Services
         // ===== SHELTERS =====
         public async Task<List<Shelter>> GetSheltersAsync()
         {
-            var response = await _httpClient.GetAsync("/shelters");
+            var response = await _httpClient.GetAsync("api/shelters");
             response.EnsureSuccessStatusCode();
             var content = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<List<Shelter>>(content) ?? new List<Shelter>();
@@ -160,7 +160,7 @@ namespace AdoptieAnimale.Mobile.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync("/adoptionrequests");
+                var response = await _httpClient.GetAsync("api/adoptionrequests");
                 response.EnsureSuccessStatusCode();
                 var content = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<List<AdoptionRequest>>(content) ?? new List<AdoptionRequest>();
